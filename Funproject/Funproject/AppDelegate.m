@@ -15,16 +15,9 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    MainViewController *mainVC = [[MainViewController alloc] init];
-    self.window.rootViewController = mainVC;
-    
-    // Make the window visible
-    [self.window makeKeyAndVisible];
     return YES;
 }
+
 
 #pragma mark - UISceneSession lifecycle
 
