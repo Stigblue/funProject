@@ -27,12 +27,12 @@ struct DateTimePickerView: View {
                     .cornerRadius(8)
             }
             .alert(isPresented: $showAlert) {
-                Alert(title: Text("Invalid Date"), message: Text("Please select a date that is not in the future."), dismissButton: .default(Text("OK")))
+                Alert(title: Text("Invalid Date"), message: Text("Please select a datetime that is not in the future."), dismissButton: .default(Text("OK")))
             }
         }
         .onAppear {
             // Fetch initial date from API or CoreData
-            self.selectedDate = coreDataManager.fetchInitialDate()
+            self.selectedDate = selectedDate.fetchValidDateWithMockedHourMinute()
         }
     }
     
