@@ -16,7 +16,7 @@ import CoreData
     public override init() {}
     
     let persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "YourAppModel")
+        let container = NSPersistentContainer(name: "Funproject")
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -55,10 +55,10 @@ import CoreData
         } catch {
             print("Fetch failed: \(error)")
         }
-        return Date() // Fallback to current date
+        return Date()
     }
     
-    @objc func fetchCompanyName() -> String? {  // Method for fetching company name
+    @objc func fetchCompanyName() -> String? {
         let context = persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Company> = Company.fetchRequest()
         
