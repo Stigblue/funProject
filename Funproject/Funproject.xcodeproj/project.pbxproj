@@ -38,14 +38,10 @@
 		5318269E2CAD7DC70049C313 /* DateTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeViewController.swift; sourceTree = "<group>"; };
 		531826A02CAD7E860049C313 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		531826A22CAD7F250049C313 /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
-		531826A42CAD86F30049C313 /* Company+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Company+CoreDataProperties.h"; sourceTree = "<group>"; };
-		531826A52CAD86F30049C313 /* Company+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Company+CoreDataClass.h"; sourceTree = "<group>"; };
-		531826A62CAD86F30049C313 /* Company+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Company+CoreDataClass.m"; sourceTree = "<group>"; };
-		531826A72CAD86F30049C313 /* Company+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Company+CoreDataProperties.m"; sourceTree = "<group>"; };
-		531826A82CAD86F30049C313 /* Employee+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Employee+CoreDataProperties.h"; sourceTree = "<group>"; };
-		531826A92CAD86F30049C313 /* Employee+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Employee+CoreDataClass.h"; sourceTree = "<group>"; };
-		531826AA2CAD86F30049C313 /* Employee+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Employee+CoreDataClass.m"; sourceTree = "<group>"; };
-		531826AB2CAD86F30049C313 /* Employee+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Employee+CoreDataProperties.m"; sourceTree = "<group>"; };
+		534314692CAD9D5600DB2CF8 /* Company+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5343146A2CAD9D5600DB2CF8 /* Company+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5343146B2CAD9D5600DB2CF8 /* Employee+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Employee+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5343146C2CAD9D5600DB2CF8 /* Employee+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Employee+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +97,10 @@
 		531826AC2CAD870F0049C313 /* NSManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				531826A42CAD86F30049C313 /* Company+CoreDataProperties.h */,
-				531826A52CAD86F30049C313 /* Company+CoreDataClass.h */,
-				531826A62CAD86F30049C313 /* Company+CoreDataClass.m */,
-				531826A72CAD86F30049C313 /* Company+CoreDataProperties.m */,
-				531826A82CAD86F30049C313 /* Employee+CoreDataProperties.h */,
-				531826A92CAD86F30049C313 /* Employee+CoreDataClass.h */,
-				531826AA2CAD86F30049C313 /* Employee+CoreDataClass.m */,
-				531826AB2CAD86F30049C313 /* Employee+CoreDataProperties.m */,
+				534314692CAD9D5600DB2CF8 /* Company+CoreDataClass.swift */,
+				5343146A2CAD9D5600DB2CF8 /* Company+CoreDataProperties.swift */,
+				5343146B2CAD9D5600DB2CF8 /* Employee+CoreDataClass.swift */,
+				5343146C2CAD9D5600DB2CF8 /* Employee+CoreDataProperties.swift */,
 			);
 			path = NSManagedObjects;
 			sourceTree = "<group>";
