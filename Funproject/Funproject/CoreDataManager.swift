@@ -10,10 +10,10 @@ import CoreData
 
 // Note:
 // Interface Segregation Principle: The CoreDataManager class handles all CoreData operations, keeping CoreData logic segregated from the UI.
-class CoreDataManager {
-    static let shared = CoreDataManager()
+@objc class CoreDataManager: NSObject {
+    @objc static let shared = CoreDataManager()
     
-    private init() {}
+    public override init() {}
     
     let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "YourAppModel")
@@ -39,7 +39,7 @@ class CoreDataManager {
         }
     }
     
-    func fetchInitialDate() -> Date {
+   @objc func fetchInitialDate() -> Date {
         let context = persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Employee> = Employee.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "check_in_date_time", ascending: false)]
@@ -56,5 +56,20 @@ class CoreDataManager {
             print("Fetch failed: \(error)")
         }
         return Date() // Fallback to current date
+    }
+    
+    @objc func fetchCompanyName() -> String? {  // Method for fetching company name
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Company> = Company.fetchRequest()
+        
+        do {
+            let companies = try context.fetch(fetchRequest)
+            if let company = companies.first {
+                return company.name
+            }
+        } catch {
+            print("Failed to fetch company: \(error)")
+        }
+        return nil
     }
 }
