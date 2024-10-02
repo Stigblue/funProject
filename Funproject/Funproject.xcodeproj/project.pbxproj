@@ -15,9 +15,8 @@
 		531826922CAD76830049C313 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 531826912CAD76830049C313 /* Base */; };
 		531826952CAD76830049C313 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 531826942CAD76830049C313 /* main.m */; };
 		5318269D2CAD7A7A0049C313 /* DateTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5318269C2CAD7A7A0049C313 /* DateTimePickerView.swift */; };
-		5318269F2CAD7DC70049C313 /* DateTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5318269E2CAD7DC70049C313 /* DateTimeViewController.swift */; };
+		5318269F2CAD7DC70049C313 /* DateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5318269E2CAD7DC70049C313 /* DateTimePickerViewController.swift */; };
 		531826A12CAD7E860049C313 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531826A02CAD7E860049C313 /* CoreDataManager.swift */; };
-		531826A32CAD7F250049C313 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531826A22CAD7F250049C313 /* APIService.swift */; };
 		5343146E2CADAE6100DB2CF8 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5343146D2CADAE5E00DB2CF8 /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,9 +35,8 @@
 		531826942CAD76830049C313 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5318269B2CAD7A790049C313 /* Funproject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Funproject-Bridging-Header.h"; sourceTree = "<group>"; };
 		5318269C2CAD7A7A0049C313 /* DateTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickerView.swift; sourceTree = "<group>"; };
-		5318269E2CAD7DC70049C313 /* DateTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeViewController.swift; sourceTree = "<group>"; };
+		5318269E2CAD7DC70049C313 /* DateTimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickerViewController.swift; sourceTree = "<group>"; };
 		531826A02CAD7E860049C313 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		531826A22CAD7F250049C313 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		534314692CAD9D5600DB2CF8 /* Company+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5343146A2CAD9D5600DB2CF8 /* Company+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5343146B2CAD9D5600DB2CF8 /* Employee+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Employee+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -77,22 +75,13 @@
 		5318267E2CAD76820049C313 /* Funproject */ = {
 			isa = PBXGroup;
 			children = (
-				531826AD2CAD87270049C313 /* CoreData */,
-				5318267F2CAD76820049C313 /* AppDelegate.h */,
-				531826802CAD76820049C313 /* AppDelegate.m */,
-				531826822CAD76820049C313 /* SceneDelegate.h */,
-				531826832CAD76820049C313 /* SceneDelegate.m */,
-				531826852CAD76820049C313 /* MainViewController.h */,
-				531826862CAD76820049C313 /* MainViewController.m */,
-				5318269C2CAD7A7A0049C313 /* DateTimePickerView.swift */,
-				5318269E2CAD7DC70049C313 /* DateTimeViewController.swift */,
-				531826A02CAD7E860049C313 /* CoreDataManager.swift */,
-				5343146D2CADAE5E00DB2CF8 /* Date+Extensions.swift */,
-				531826A22CAD7F250049C313 /* APIService.swift */,
+				534314742CADB3FA00DB2CF8 /* Extensions */,
+				534314712CADB39300DB2CF8 /* Views */,
+				534314702CADB38700DB2CF8 /* Models */,
+				5343146F2CADB35B00DB2CF8 /* App */,
 				5318268E2CAD76830049C313 /* Assets.xcassets */,
 				531826902CAD76830049C313 /* LaunchScreen.storyboard */,
 				531826932CAD76830049C313 /* Info.plist */,
-				531826942CAD76830049C313 /* main.m */,
 			);
 			path = Funproject;
 			sourceTree = "<group>";
@@ -113,8 +102,64 @@
 			children = (
 				531826AC2CAD870F0049C313 /* NSManagedObjects */,
 				5318268B2CAD76820049C313 /* Funproject.xcdatamodeld */,
+				531826A02CAD7E860049C313 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		5343146F2CADB35B00DB2CF8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				531826942CAD76830049C313 /* main.m */,
+				5318267F2CAD76820049C313 /* AppDelegate.h */,
+				531826802CAD76820049C313 /* AppDelegate.m */,
+				531826822CAD76820049C313 /* SceneDelegate.h */,
+				531826832CAD76820049C313 /* SceneDelegate.m */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		534314702CADB38700DB2CF8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				531826AD2CAD87270049C313 /* CoreData */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		534314712CADB39300DB2CF8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				534314732CADB3B000DB2CF8 /* DateTime */,
+				534314722CADB3A300DB2CF8 /* Main */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		534314722CADB3A300DB2CF8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				531826852CAD76820049C313 /* MainViewController.h */,
+				531826862CAD76820049C313 /* MainViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		534314732CADB3B000DB2CF8 /* DateTime */ = {
+			isa = PBXGroup;
+			children = (
+				5318269C2CAD7A7A0049C313 /* DateTimePickerView.swift */,
+				5318269E2CAD7DC70049C313 /* DateTimePickerViewController.swift */,
+			);
+			path = DateTime;
+			sourceTree = "<group>";
+		};
+		534314742CADB3FA00DB2CF8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5343146D2CADAE5E00DB2CF8 /* Date+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,9 +239,8 @@
 				5318269D2CAD7A7A0049C313 /* DateTimePickerView.swift in Sources */,
 				531826842CAD76820049C313 /* SceneDelegate.m in Sources */,
 				5318268D2CAD76820049C313 /* Funproject.xcdatamodeld in Sources */,
-				531826A32CAD7F250049C313 /* APIService.swift in Sources */,
 				531826A12CAD7E860049C313 /* CoreDataManager.swift in Sources */,
-				5318269F2CAD7DC70049C313 /* DateTimeViewController.swift in Sources */,
+				5318269F2CAD7DC70049C313 /* DateTimePickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

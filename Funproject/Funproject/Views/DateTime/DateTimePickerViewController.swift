@@ -1,7 +1,7 @@
 import SwiftUI
 import UIKit
 
-class DateTimeViewController: UIViewController {
+class DateTimePickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -65,7 +65,7 @@
     NSLog(@"Start button tapped");
     
     // Navigate to the SwiftUI screen
-    DateTimeViewController *dateTimeVC = [[DateTimeViewController alloc] init];
+    DateTimePickerViewController *dateTimeVC = [[DateTimePickerViewController alloc] init];
     [self.navigationController pushViewController:dateTimeVC animated:YES];
 }
 
