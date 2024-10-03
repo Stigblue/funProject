@@ -25,27 +25,6 @@ import CoreData
         return container
     }()
 
-//    func saveCheckInDate(_ date: Date) {
-//        let context = persistentContainer.viewContext
-//        
-//        if !date.isValidDateTime() {
-//            print("Datetime is invalid (in the future), not saving.")
-//            return
-//        }
-//        
-//        let employee = Employee(context: context)
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-//        employee.check_in_date_time = formatter.string(from: date)
-//
-//        do {
-//            try context.save()
-//            print("Check-in date saved successfully")
-//        } catch {
-//            print("Failed to save: \(error)")
-//        }
-//    }
-    
     func saveCheckInDate(_ date: Date, forCompany companyName: String) {
         let context = persistentContainer.viewContext
 
@@ -65,6 +44,7 @@ import CoreData
             } else {
                 company = Company(context: context)
                 company.name = companyName
+                company.createdAt = Date()
             }
         } catch {
             print("Failed to fetch or create company: \(error)")
@@ -89,6 +69,10 @@ import CoreData
     @objc func fetchCompanyName() -> String? {
         let context = persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Company> = Company.fetchRequest()
+        
+        // Sort the fetch request to get the most recent company
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
+        fetchRequest.fetchLimit = 1
 
         do {
             let companies = try context.fetch(fetchRequest)

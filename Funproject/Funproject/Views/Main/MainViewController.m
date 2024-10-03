@@ -43,6 +43,8 @@
     self.datePicker.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.datePicker];
     
+    self.datePicker.userInteractionEnabled = NO; // dont want this to be interacted with. Only for showing the date.
+    
 }
 
 - (void)setupConstraints {
@@ -74,42 +76,38 @@
 
 
 - (void)startButtonTapped {
-    // Debug log
-    NSLog(@"Start button tapped");
-    
-    // Navigate to the SwiftUI screen
     DateTimePickerViewController *dateTimeVC = [[DateTimePickerViewController alloc] init];
     [self.navigationController pushViewController:dateTimeVC animated:YES];
 }
 
 - (void)fetchAndDisplayCompanyName {
     NSString *companyName = [[CoreDataManager shared] fetchCompanyName];
+    NSDate *lastCheckInDate = [[CoreDataManager shared] fetchInitialDate];
+    
+    NSLog(@"Fetched company name: %@", companyName);
+    NSLog(@"Fetched last checkin date: %@", lastCheckInDate);
+    
+    
+    NSString *lastCheckInDateString;
+    if (lastCheckInDate) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        lastCheckInDateString = [dateFormatter stringFromDate:lastCheckInDate];
+    } else {
+        lastCheckInDateString = @"No check-in available"; // Fallback text if no date exists
+    }
 
     if (companyName != nil) {
-        self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to %@", companyName];
+        self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to %@\nLast Check-In: %@", companyName, lastCheckInDateString];
     } else {
-        self.welcomeLabel.text = @"Welcome to our app";
+        self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to our app\nLast Check-In: %@", lastCheckInDateString];
     }
 }
 
+
 - (void)setDatePickerInitialValue {
     NSDate *initialDate = [[CoreDataManager shared] fetchInitialDate];
-    
-    // Set this date in the picker
     [self.datePicker setDate:initialDate animated:YES];
 }
-
-//- (void)submitButtonTapped {
-//    NSDate *selectedDate = self.datePicker.date;
-//    
-//    if ([selectedDate isValidDateTime]) {
-//        // Save the valid date to Core Data
-//        [[CoreDataManager shared] saveCheckInDate:selectedDate];
-//        NSLog(@"Date saved successfully: %@", selectedDate);
-//    } else {
-//        // Display an error message if the date is invalid
-//        NSLog(@"Selected date is in the future and cannot be saved.");
-//    }
-//}
 
 @end
