@@ -38,10 +38,10 @@
 		5318269E2CAD7DC70049C313 /* DateTimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickerViewController.swift; sourceTree = "<group>"; };
 		531826A02CAD7E860049C313 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5343146D2CADAE5E00DB2CF8 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
-		534314762CAF118B00DB2CF8 /* Company+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataClass.swift"; sourceTree = "<group>"; };
-		534314772CAF118B00DB2CF8 /* Company+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		534314782CAF118B00DB2CF8 /* Employee+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Employee+CoreDataClass.swift"; sourceTree = "<group>"; };
-		534314792CAF118B00DB2CF8 /* Employee+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Employee+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5343147A2CAF26B000DB2CF8 /* Company+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5343147B2CAF26B000DB2CF8 /* Company+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5343147C2CAF26B000DB2CF8 /* Employee+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Employee+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5343147D2CAF26B000DB2CF8 /* Employee+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Employee+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,10 +89,10 @@
 		531826AC2CAD870F0049C313 /* NSManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				534314762CAF118B00DB2CF8 /* Company+CoreDataClass.swift */,
-				534314772CAF118B00DB2CF8 /* Company+CoreDataProperties.swift */,
-				534314782CAF118B00DB2CF8 /* Employee+CoreDataClass.swift */,
-				534314792CAF118B00DB2CF8 /* Employee+CoreDataProperties.swift */,
+				5343147A2CAF26B000DB2CF8 /* Company+CoreDataClass.swift */,
+				5343147B2CAF26B000DB2CF8 /* Company+CoreDataProperties.swift */,
+				5343147C2CAF26B000DB2CF8 /* Employee+CoreDataClass.swift */,
+				5343147D2CAF26B000DB2CF8 /* Employee+CoreDataProperties.swift */,
 			);
 			path = NSManagedObjects;
 			sourceTree = "<group>";

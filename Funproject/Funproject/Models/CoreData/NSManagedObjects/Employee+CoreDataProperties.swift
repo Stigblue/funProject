@@ -17,6 +17,7 @@ extension Employee {
     }
 
     @NSManaged public var check_in_date_time: String?
+    @NSManaged public var createdAt: Date?
     @NSManaged public var company: Company?
 
 }

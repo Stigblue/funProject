@@ -6,7 +6,7 @@
 //
 
 #import "MainViewController.h"
-#import "Funproject-Swift.h" // Make sure this is correct and matches your module name
+#import "Funproject-Swift.h" 
 
 @interface MainViewController ()
 @property (nonatomic, strong) UIButton *startButton;
@@ -55,25 +55,23 @@
 
 - (void)setupConstraints {
     [NSLayoutConstraint activateConstraints:@[
-           [self.welcomeLabel.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:40],
-           [self.welcomeLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+        [self.welcomeLabel.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:40],
+        [self.welcomeLabel.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+        [self.welcomeLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+        [self.welcomeLabel.heightAnchor constraintEqualToConstant:40]
+    ]];
+    [NSLayoutConstraint activateConstraints:@[
+        [self.lastSelectedDatePickerLabel.topAnchor constraintEqualToAnchor:self.welcomeLabel.bottomAnchor constant:20],
+        [self.lastSelectedDatePickerLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+        [self.lastSelectedDatePickerLabel.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
+        [self.lastSelectedDatePickerLabel.heightAnchor constraintEqualToConstant:40]
+    ]];
+
+    [NSLayoutConstraint activateConstraints:@[
+        [self.datePicker.topAnchor constraintEqualToAnchor:self.lastSelectedDatePickerLabel.bottomAnchor constant:20],
+        [self.datePicker.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+    ]];
     
-           [self.welcomeLabel.heightAnchor constraintEqualToConstant:40]
-       ]];
-
-       [NSLayoutConstraint activateConstraints:@[
-           [self.lastSelectedDatePickerLabel.topAnchor constraintEqualToAnchor:self.welcomeLabel.bottomAnchor constant:20],
-           [self.lastSelectedDatePickerLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
-           [self.lastSelectedDatePickerLabel.heightAnchor constraintEqualToConstant:40]
-       ]];
-
-       [NSLayoutConstraint activateConstraints:@[
-           [self.datePicker.leadingAnchor constraintEqualToAnchor:self.lastSelectedDatePickerLabel.trailingAnchor constant:20],
-         
-           [self.datePicker.centerYAnchor constraintEqualToAnchor:self.lastSelectedDatePickerLabel.centerYAnchor], // Vertically align with the label
-           [self.datePicker.heightAnchor constraintEqualToConstant:40] // Optional: Control height for uniformity
-       ]];
-
     [NSLayoutConstraint activateConstraints:@[
         [self.startButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
         [self.startButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-20]
@@ -105,11 +103,12 @@
     }
 }
 
-
 - (void)setDatePickerInitialValue {
     [[CoreDataManager shared] fetchInitialDateWithCompletion:^(NSDate *date) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.datePicker setDate:date animated:YES];
+            NSLog(@"Fetched check-in date: %@", date);
+            self.lastSelectedDatePickerLabel.text = [NSString stringWithFormat:@"Last Check-in:"];
         });
     }];
 }
