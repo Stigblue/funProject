@@ -28,7 +28,7 @@ import CoreData
     func saveCheckInDate(_ date: Date) {
         let context = persistentContainer.viewContext
         
-        if !date.isValidDateTime(selectedDate: date) {
+        if !date.isValidDateTime() {
             print("Datetime is invalid (in the future), not saving.")
             return
         }
@@ -60,4 +60,24 @@ import CoreData
         }
         return nil
     }
+    
+    @objc func fetchInitialDate() -> Date {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Employee> = Employee.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "check_in_date_time", ascending: false)]
+        fetchRequest.fetchLimit = 1
+
+        do {
+            let result = try context.fetch(fetchRequest).first
+            if let dateString = result?.check_in_date_time {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm"
+                return formatter.date(from: dateString) ?? Date().fetchValidDateWithMockedHourMinute()
+            }
+        } catch {
+            print("Fetch failed: \(error)")
+        }
+        return Date().fetchValidDateWithMockedHourMinute()
+    }
+
 }

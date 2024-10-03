@@ -12,12 +12,12 @@ public extension Date {
     
     func fetchValidDateWithMockedHourMinute() -> Date {
         let mockedDate = fetchDateWithMockedHourMinute()
-        return isValidDateTime(selectedDate: mockedDate) ? mockedDate : Date()
+        return mockedDate.isValidDateTime() ? mockedDate : Date()
     }
     
-    func isValidDateTime(selectedDate: Date) -> Bool {
+func isValidDateTime() -> Bool {
         let currentDate = Date()
-        return selectedDate <= currentDate // Ensures the date is not in the future
+        return self <= currentDate // Ensures the date is not in the future
     }
 }
 

@@ -11,51 +11,62 @@
 @interface MainViewController ()
 @property (nonatomic, strong) UIButton *startButton;
 @property (nonatomic, strong) UILabel *welcomeLabel;
+@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) UIButton *submitButton;
 @end
 
 @implementation MainViewController
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        NSLog(@"MainViewController initialized");
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupViews];
+    [self setupConstraints];
+    [self setDatePickerInitialValue];
+}
+
+- (void)setupViews {
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    // Debug log to ensure viewDidLoad is called
-    NSLog(@"MainViewController loaded");
-    
-    
-    
-    // Set up the view
-    self.view.backgroundColor = [UIColor whiteColor];  // Make sure this is visible
-    
-    // Welcome Label (Bonus: Show company name)
-    self.welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 100, 300, 40)];
+    self.welcomeLabel = [[UILabel alloc] init];
     self.welcomeLabel.text = @"Welcome to [Company Name]";
     self.welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    self.welcomeLabel.backgroundColor = [UIColor yellowColor]; // Set background color for debugging
+    self.welcomeLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.welcomeLabel];
-
-    // Start Button
+    
     self.startButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.startButton.frame = CGRectMake(100, 200, 200, 50);
     [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
-    self.startButton.backgroundColor = [UIColor greenColor]; // Set background color for debugging
     [self.startButton addTarget:self action:@selector(startButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    self.startButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.startButton];
     
-    NSLog(@"Welcome Label Frame: %@", NSStringFromCGRect(self.welcomeLabel.frame));
-    NSLog(@"Start Button Frame: %@", NSStringFromCGRect(self.startButton.frame));
+    self.datePicker = [[UIDatePicker alloc] init];
+    self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    self.datePicker.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.datePicker];
+    
+}
+
+- (void)setupConstraints {
+    [NSLayoutConstraint activateConstraints:@[
+        [self.welcomeLabel.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:40],
+        [self.welcomeLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+        [self.welcomeLabel.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
+        [self.welcomeLabel.heightAnchor constraintEqualToConstant:40]
+    ]];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [self.startButton.topAnchor constraintEqualToAnchor:self.welcomeLabel.bottomAnchor constant:20],
+        [self.startButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor]
+    ]];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [self.datePicker.topAnchor constraintEqualToAnchor:self.startButton.bottomAnchor constant:20],
+        [self.datePicker.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+    ]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     [self fetchAndDisplayCompanyName];
 }
 
@@ -80,5 +91,25 @@
         self.welcomeLabel.text = @"Welcome to our app";
     }
 }
+
+- (void)setDatePickerInitialValue {
+    NSDate *initialDate = [[CoreDataManager shared] fetchInitialDate];
+    
+    // Set this date in the picker
+    [self.datePicker setDate:initialDate animated:YES];
+}
+
+//- (void)submitButtonTapped {
+//    NSDate *selectedDate = self.datePicker.date;
+//    
+//    if ([selectedDate isValidDateTime]) {
+//        // Save the valid date to Core Data
+//        [[CoreDataManager shared] saveCheckInDate:selectedDate];
+//        NSLog(@"Date saved successfully: %@", selectedDate);
+//    } else {
+//        // Display an error message if the date is invalid
+//        NSLog(@"Selected date is in the future and cannot be saved.");
+//    }
+//}
 
 @end

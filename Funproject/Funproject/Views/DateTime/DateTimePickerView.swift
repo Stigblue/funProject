@@ -1,7 +1,4 @@
 import SwiftUI
-
-// Note:
-// Single Responsibility Principle: The DateTimePickerView is responsible for the UI and user interaction logic only. All business logic is handled by CoreDataManager, adhering to SRP.
                                                                                     
 struct DateTimePickerView: View {
     @State private var selectedDate = Date()
@@ -14,7 +11,7 @@ struct DateTimePickerView: View {
                 .padding()
             
             Button(action: {
-                if isValidDate(selectedDate) {
+                    if selectedDate.isValidDateTime() {
                     coreDataManager.saveCheckInDate(selectedDate)
                 } else {
                     showAlert = true
@@ -34,9 +31,5 @@ struct DateTimePickerView: View {
             // Fetch initial date from API or CoreData
             self.selectedDate = selectedDate.fetchValidDateWithMockedHourMinute()
         }
-    }
-    
-    func isValidDate(_ date: Date) -> Bool {
-        return date <= Date() // Ensure the date is not in the future
     }
 }
