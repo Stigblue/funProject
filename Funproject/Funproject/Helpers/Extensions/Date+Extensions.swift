@@ -1,10 +1,3 @@
-//
-//  Date+Extensions.swift
-//  Funproject
-//
-//  Created by Stig von der Ahé on 02/10/2024.
-//
-
 import Swift
 import Foundation
 

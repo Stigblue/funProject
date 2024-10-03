@@ -16,8 +16,11 @@
 		531826952CAD76830049C313 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 531826942CAD76830049C313 /* main.m */; };
 		5318269D2CAD7A7A0049C313 /* DateTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5318269C2CAD7A7A0049C313 /* DateTimePickerView.swift */; };
 		5318269F2CAD7DC70049C313 /* DateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5318269E2CAD7DC70049C313 /* DateTimePickerViewController.swift */; };
-		531826A12CAD7E860049C313 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531826A02CAD7E860049C313 /* CoreDataManager.swift */; };
 		5343146E2CADAE6100DB2CF8 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5343146D2CADAE5E00DB2CF8 /* Date+Extensions.swift */; };
+		5343147F2CAF472100DB2CF8 /* EmployeeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5343147E2CAF472100DB2CF8 /* EmployeeService.swift */; };
+		534314812CAF475800DB2CF8 /* CompanyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534314802CAF475800DB2CF8 /* CompanyService.swift */; };
+		534314832CAF478000DB2CF8 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534314822CAF478000DB2CF8 /* DateFormatter.swift */; };
+		534314852CAF47DA00DB2CF8 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534314842CAF47DA00DB2CF8 /* CoreDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,12 +39,15 @@
 		5318269B2CAD7A790049C313 /* Funproject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Funproject-Bridging-Header.h"; sourceTree = "<group>"; };
 		5318269C2CAD7A7A0049C313 /* DateTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickerView.swift; sourceTree = "<group>"; };
 		5318269E2CAD7DC70049C313 /* DateTimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickerViewController.swift; sourceTree = "<group>"; };
-		531826A02CAD7E860049C313 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5343146D2CADAE5E00DB2CF8 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		5343147A2CAF26B000DB2CF8 /* Company+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5343147B2CAF26B000DB2CF8 /* Company+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5343147C2CAF26B000DB2CF8 /* Employee+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Employee+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5343147D2CAF26B000DB2CF8 /* Employee+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Employee+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5343147E2CAF472100DB2CF8 /* EmployeeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeService.swift; sourceTree = "<group>"; };
+		534314802CAF475800DB2CF8 /* CompanyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyService.swift; sourceTree = "<group>"; };
+		534314822CAF478000DB2CF8 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		534314842CAF47DA00DB2CF8 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +81,7 @@
 		5318267E2CAD76820049C313 /* Funproject */ = {
 			isa = PBXGroup;
 			children = (
-				534314742CADB3FA00DB2CF8 /* Extensions */,
+				534314862CAF570600DB2CF8 /* Helpers */,
 				534314712CADB39300DB2CF8 /* Views */,
 				534314702CADB38700DB2CF8 /* Models */,
 				5343146F2CADB35B00DB2CF8 /* App */,
@@ -102,7 +108,7 @@
 			children = (
 				531826AC2CAD870F0049C313 /* NSManagedObjects */,
 				5318268B2CAD76820049C313 /* Funproject.xcdatamodeld */,
-				531826A02CAD7E860049C313 /* CoreDataManager.swift */,
+				534314842CAF47DA00DB2CF8 /* CoreDataService.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -122,6 +128,8 @@
 		534314702CADB38700DB2CF8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5343147E2CAF472100DB2CF8 /* EmployeeService.swift */,
+				534314802CAF475800DB2CF8 /* CompanyService.swift */,
 				531826AD2CAD87270049C313 /* CoreData */,
 			);
 			path = Models;
@@ -160,6 +168,15 @@
 				5343146D2CADAE5E00DB2CF8 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		534314862CAF570600DB2CF8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				534314822CAF478000DB2CF8 /* DateFormatter.swift */,
+				534314742CADB3FA00DB2CF8 /* Extensions */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,14 +249,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				534314832CAF478000DB2CF8 /* DateFormatter.swift in Sources */,
+				534314852CAF47DA00DB2CF8 /* CoreDataService.swift in Sources */,
 				531826952CAD76830049C313 /* main.m in Sources */,
 				531826872CAD76820049C313 /* MainViewController.m in Sources */,
 				531826812CAD76820049C313 /* AppDelegate.m in Sources */,
 				5343146E2CADAE6100DB2CF8 /* Date+Extensions.swift in Sources */,
 				5318269D2CAD7A7A0049C313 /* DateTimePickerView.swift in Sources */,
 				531826842CAD76820049C313 /* SceneDelegate.m in Sources */,
+				534314812CAF475800DB2CF8 /* CompanyService.swift in Sources */,
 				5318268D2CAD76820049C313 /* Funproject.xcdatamodeld in Sources */,
-				531826A12CAD7E860049C313 /* CoreDataManager.swift in Sources */,
+				5343147F2CAF472100DB2CF8 /* EmployeeService.swift in Sources */,
 				5318269F2CAD7DC70049C313 /* DateTimePickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

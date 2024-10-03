@@ -5,7 +5,7 @@ class DateTimePickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let swiftUIView = DateTimePickerView(coreDataManager: CoreDataManager.shared)
+        let swiftUIView = DateTimePickerView()
         let hostingController = UIHostingController(rootView: swiftUIView)
         addChild(hostingController)
         hostingController.view.frame = self.view.bounds

@@ -49,7 +49,7 @@
     self.datePicker.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.datePicker];
     
-    self.datePicker.userInteractionEnabled = NO; // dont want this to be interacted with. Only for showing the date.
+    self.datePicker.userInteractionEnabled = NO; // dont want this to be interacted with. Only for showing the prev selected date.
     
 }
 
@@ -66,12 +66,10 @@
         [self.lastSelectedDatePickerLabel.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
         [self.lastSelectedDatePickerLabel.heightAnchor constraintEqualToConstant:40]
     ]];
-
     [NSLayoutConstraint activateConstraints:@[
         [self.datePicker.topAnchor constraintEqualToAnchor:self.lastSelectedDatePickerLabel.bottomAnchor constant:20],
         [self.datePicker.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
     ]];
-    
     [NSLayoutConstraint activateConstraints:@[
         [self.startButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
         [self.startButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-20]
@@ -94,7 +92,8 @@
 }
 
 - (void)fetchAndDisplayCompanyName {
-    NSString *companyName = [[CoreDataManager shared] fetchCompanyName];
+    CompanyService *companyService = [[CompanyService alloc] init];
+    NSString *companyName = [companyService fetchMostRecentCompanyName];
     
     if (companyName != nil) {
         self.welcomeLabel.text = [NSString stringWithFormat:@"Last saved Company: %@", companyName];
@@ -104,7 +103,9 @@
 }
 
 - (void)setDatePickerInitialValue {
-    [[CoreDataManager shared] fetchInitialDateWithCompletion:^(NSDate *date) {
+    EmployeeService *employeeService = [[EmployeeService alloc] init];
+    
+    [employeeService fetchMostRecentCheckInDateWithCompletion:^(NSDate *date) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.datePicker setDate:date animated:YES];
             NSLog(@"Fetched check-in date: %@", date);
@@ -112,5 +113,6 @@
         });
     }];
 }
+
 
 @end
