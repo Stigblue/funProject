@@ -32,7 +32,7 @@ struct DateTimePickerView: View {
                     .padding()
                     .background(Color.blue)
                     .foregroundColor(.white)
-                    .cornerRadius(8)
+                    .cornerRadius(12)
             }
         }
     }
@@ -63,7 +63,7 @@ private extension DateTimePickerView {
                     .padding()
                     .background(Color.blue)
                     .foregroundColor(.white)
-                    .cornerRadius(8)
+                    .cornerRadius(12)
             }
             .padding()
         }
