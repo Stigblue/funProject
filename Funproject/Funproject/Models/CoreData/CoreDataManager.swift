@@ -97,23 +97,31 @@ import CoreData
         return nil
     }
     
-    @objc func fetchInitialDate() -> Date {
-        let context = persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Employee> = Employee.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "check_in_date_time", ascending: false)]
-        fetchRequest.fetchLimit = 1
+    @objc func fetchInitialDate(completion: @escaping (Date) -> Void) {
+       
+        DispatchQueue.global(qos: .background).async {
+            let context = self.persistentContainer.viewContext
+            let fetchRequest: NSFetchRequest<Employee> = Employee.fetchRequest()
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "check_in_date_time", ascending: false)]
+            fetchRequest.fetchLimit = 1
 
-        do {
-            let result = try context.fetch(fetchRequest).first
-            if let dateString = result?.check_in_date_time {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd HH:mm"
-                return formatter.date(from: dateString) ?? Date().fetchValidDateWithMockedHourMinute()
+            do {
+                let result = try context.fetch(fetchRequest).first
+                if let dateString = result?.check_in_date_time {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd HH:mm"
+                    let fetchedDate = formatter.date(from: dateString) ?? Date().fetchValidDateWithMockedHourMinute()
+                    completion(fetchedDate)
+                    return
+                }
+            } catch {
+                print("Fetch failed: \(error)")
             }
-        } catch {
-            print("Fetch failed: \(error)")
+            
+            // If no date was fetched, return the mocked date
+            let mockedDate = Date().fetchValidDateWithMockedHourMinute()
+            completion(mockedDate)
         }
-        return Date().fetchValidDateWithMockedHourMinute()
     }
 
 }

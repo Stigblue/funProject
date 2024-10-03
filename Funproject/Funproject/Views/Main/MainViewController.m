@@ -11,6 +11,7 @@
 @interface MainViewController ()
 @property (nonatomic, strong) UIButton *startButton;
 @property (nonatomic, strong) UILabel *welcomeLabel;
+@property (nonatomic, strong) UILabel *lastSelectedDatePickerLabel;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIButton *submitButton;
 @end
@@ -27,10 +28,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.welcomeLabel = [[UILabel alloc] init];
-    self.welcomeLabel.text = @"Welcome to [Company Name]";
     self.welcomeLabel.textAlignment = NSTextAlignmentCenter;
     self.welcomeLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.welcomeLabel];
+    
+    self.lastSelectedDatePickerLabel = [[UILabel alloc] init];
+    self.lastSelectedDatePickerLabel.text = @"Last saved date:";
+    self.lastSelectedDatePickerLabel.textAlignment = NSTextAlignmentCenter;
+    self.lastSelectedDatePickerLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.lastSelectedDatePickerLabel];
     
     self.startButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
@@ -49,22 +55,31 @@
 
 - (void)setupConstraints {
     [NSLayoutConstraint activateConstraints:@[
-        [self.welcomeLabel.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:40],
-        [self.welcomeLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
-        [self.welcomeLabel.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
-        [self.welcomeLabel.heightAnchor constraintEqualToConstant:40]
-    ]];
+           [self.welcomeLabel.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:40],
+           [self.welcomeLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
     
+           [self.welcomeLabel.heightAnchor constraintEqualToConstant:40]
+       ]];
+
+       [NSLayoutConstraint activateConstraints:@[
+           [self.lastSelectedDatePickerLabel.topAnchor constraintEqualToAnchor:self.welcomeLabel.bottomAnchor constant:20],
+           [self.lastSelectedDatePickerLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+           [self.lastSelectedDatePickerLabel.heightAnchor constraintEqualToConstant:40]
+       ]];
+
+       [NSLayoutConstraint activateConstraints:@[
+           [self.datePicker.leadingAnchor constraintEqualToAnchor:self.lastSelectedDatePickerLabel.trailingAnchor constant:20],
+         
+           [self.datePicker.centerYAnchor constraintEqualToAnchor:self.lastSelectedDatePickerLabel.centerYAnchor], // Vertically align with the label
+           [self.datePicker.heightAnchor constraintEqualToConstant:40] // Optional: Control height for uniformity
+       ]];
+
     [NSLayoutConstraint activateConstraints:@[
-        [self.startButton.topAnchor constraintEqualToAnchor:self.welcomeLabel.bottomAnchor constant:20],
-        [self.startButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor]
-    ]];
-    
-    [NSLayoutConstraint activateConstraints:@[
-        [self.datePicker.topAnchor constraintEqualToAnchor:self.startButton.bottomAnchor constant:20],
-        [self.datePicker.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+        [self.startButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+        [self.startButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-20]
     ]];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -82,32 +97,21 @@
 
 - (void)fetchAndDisplayCompanyName {
     NSString *companyName = [[CoreDataManager shared] fetchCompanyName];
-    NSDate *lastCheckInDate = [[CoreDataManager shared] fetchInitialDate];
     
-    NSLog(@"Fetched company name: %@", companyName);
-    NSLog(@"Fetched last checkin date: %@", lastCheckInDate);
-    
-    
-    NSString *lastCheckInDateString;
-    if (lastCheckInDate) {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-        lastCheckInDateString = [dateFormatter stringFromDate:lastCheckInDate];
-    } else {
-        lastCheckInDateString = @"No check-in available";
-    }
-
     if (companyName != nil) {
-        self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to %@\nLast Check-In: %@", companyName, lastCheckInDateString];
+        self.welcomeLabel.text = [NSString stringWithFormat:@"Last saved Company: %@", companyName];
     } else {
-        self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to our app\nLast Check-In: %@", lastCheckInDateString];
+        self.welcomeLabel.text = @"Welcome first timer!";
     }
 }
 
 
 - (void)setDatePickerInitialValue {
-    NSDate *initialDate = [[CoreDataManager shared] fetchInitialDate];
-    [self.datePicker setDate:initialDate animated:YES];
+    [[CoreDataManager shared] fetchInitialDateWithCompletion:^(NSDate *date) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.datePicker setDate:date animated:YES];
+        });
+    }];
 }
 
 @end
