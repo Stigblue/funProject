@@ -17,7 +17,7 @@ public extension Date {
     
 func isValidDateTime() -> Bool {
         let currentDate = Date()
-        return self <= currentDate // Ensures the date is not in the future
+        return self <= currentDate
     }
 }
 

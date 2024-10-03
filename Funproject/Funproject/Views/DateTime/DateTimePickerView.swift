@@ -3,8 +3,8 @@ import SwiftUI
 struct DateTimePickerView: View {
     @State private var selectedDate = Date()
     @State private var showAlert = false
-    @State private var showCompanyPrompt = false  // State to toggle the sheet
-    @State private var enteredCompanyName = ""    // State to store the entered company name
+    @State private var showCompanyPrompt = false
+    @State private var enteredCompanyName = ""
     let coreDataManager: CoreDataManager
     
     var body: some View {
@@ -13,7 +13,7 @@ struct DateTimePickerView: View {
                 .padding()
             
             Button(action: {
-                showCompanyPrompt = true  // Show the company input prompt when the user taps the button
+                showCompanyPrompt = true
             }) {
                 Text("Submit")
                     .padding()
@@ -26,11 +26,9 @@ struct DateTimePickerView: View {
             }
         }
         .onAppear {
-            // Fetch initial date from API or CoreData
             self.selectedDate = selectedDate.fetchValidDateWithMockedHourMinute()
         }
         .sheet(isPresented: $showCompanyPrompt) {
-            // Show the sheet for entering company name
             VStack {
                 Text("Enter Company Name")
                     .font(.headline)
@@ -42,12 +40,11 @@ struct DateTimePickerView: View {
                 
                 Button(action: {
                     if selectedDate.isValidDateTime() {
-                        // Use the entered company name in the function call
                         coreDataManager.saveCheckInDate(selectedDate, forCompany: enteredCompanyName)
                     } else {
                         showAlert = true
                     }
-                    showCompanyPrompt = false  // Dismiss the sheet after submitting
+                    showCompanyPrompt = false
                 }) {
                     Text("Submit")
                         .padding()

@@ -94,7 +94,7 @@
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
         lastCheckInDateString = [dateFormatter stringFromDate:lastCheckInDate];
     } else {
-        lastCheckInDateString = @"No check-in available"; // Fallback text if no date exists
+        lastCheckInDateString = @"No check-in available";
     }
 
     if (companyName != nil) {
