@@ -21,7 +21,6 @@
     [super viewDidLoad];
     [self setupViews];
     [self setupConstraints];
-    [self setDatePickerInitialValue];
 }
 
 - (void)setupViews {
@@ -67,6 +66,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    // I want the screen to update with the recent values added and not just on app restart, so i will do this in viewWillAppear here.
+    [self setDatePickerInitialValue];
     [self fetchAndDisplayCompanyName];
 }
 
@@ -81,10 +83,8 @@
 }
 
 - (void)fetchAndDisplayCompanyName {
-    
-    NSLog(@"Fetching to Display Company Name");
     NSString *companyName = [[CoreDataManager shared] fetchCompanyName];
-    
+
     if (companyName != nil) {
         self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to %@", companyName];
     } else {
