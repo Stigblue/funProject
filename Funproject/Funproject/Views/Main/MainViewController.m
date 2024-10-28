@@ -7,6 +7,7 @@
 
 #import "MainViewController.h"
 #import "Funproject-Swift.h" 
+#import "MainViewControllerViewModel.h"
 
 @interface MainViewController ()
 @property (nonatomic, strong) UIButton *startButton;
@@ -17,6 +18,8 @@
 @end
 
 @implementation MainViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,7 +82,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     // I want the screen to update with the recent values added and not just on app restart, so i will do this in viewWillAppear here.
     [self setDatePickerInitialValue];
     [self fetchAndDisplayCompanyName];
@@ -92,14 +94,19 @@
 }
 
 - (void)fetchAndDisplayCompanyName {
-    CompanyService *companyService = [[CompanyService alloc] init];
-    NSString *companyName = [companyService fetchMostRecentCompanyName];
+    // Old
+//    CompanyService *companyService = [[CompanyService alloc] init];
+//    NSString *companyName = [companyService fetchMostRecentCompanyName];
+//    
+//    if (companyName != nil) {
+//        self.welcomeLabel.text = [NSString stringWithFormat:@"Last saved Company: %@", companyName];
+//    } else {
+//        self.welcomeLabel.text = @"Welcome first timer!";
+//    }
     
-    if (companyName != nil) {
-        self.welcomeLabel.text = [NSString stringWithFormat:@"Last saved Company: %@", companyName];
-    } else {
-        self.welcomeLabel.text = @"Welcome first timer!";
-    }
+    // I WANT TO EITHER EXTEND OR INJECT THIS VIEW MODEL IN THE INITIALIZER. It's not ideal to instantiate it here.
+    MainViewControllerViewModel *vm = [[MainViewControllerViewModel alloc] init];
+    self.welcomeLabel.text = vm.welcomeLabel;
 }
 
 - (void)setDatePickerInitialValue {

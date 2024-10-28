@@ -21,6 +21,7 @@
 		534314812CAF475800DB2CF8 /* CompanyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534314802CAF475800DB2CF8 /* CompanyService.swift */; };
 		534314832CAF478000DB2CF8 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534314822CAF478000DB2CF8 /* DateFormatter.swift */; };
 		534314852CAF47DA00DB2CF8 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534314842CAF47DA00DB2CF8 /* CoreDataService.swift */; };
+		53B0FE932CD02E9B0054CA5F /* MainViewControllerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B0FE922CD02E9B0054CA5F /* MainViewControllerViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		534314802CAF475800DB2CF8 /* CompanyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyService.swift; sourceTree = "<group>"; };
 		534314822CAF478000DB2CF8 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		534314842CAF47DA00DB2CF8 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		53B0FE922CD02E9B0054CA5F /* MainViewControllerViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewControllerViewModel.m; sourceTree = "<group>"; };
+		53B0FE942CD02F130054CA5F /* MainViewControllerViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerViewModel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 			children = (
 				531826852CAD76820049C313 /* MainViewController.h */,
 				531826862CAD76820049C313 /* MainViewController.m */,
+				53B0FE922CD02E9B0054CA5F /* MainViewControllerViewModel.m */,
+				53B0FE942CD02F130054CA5F /* MainViewControllerViewModel.h */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				534314832CAF478000DB2CF8 /* DateFormatter.swift in Sources */,
 				534314852CAF47DA00DB2CF8 /* CoreDataService.swift in Sources */,
 				531826952CAD76830049C313 /* main.m in Sources */,
+				53B0FE932CD02E9B0054CA5F /* MainViewControllerViewModel.m in Sources */,
 				531826872CAD76820049C313 /* MainViewController.m in Sources */,
 				531826812CAD76820049C313 /* AppDelegate.m in Sources */,
 				5343146E2CADAE6100DB2CF8 /* Date+Extensions.swift in Sources */,
