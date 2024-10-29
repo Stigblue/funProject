@@ -48,6 +48,8 @@
 		534314802CAF475800DB2CF8 /* CompanyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyService.swift; sourceTree = "<group>"; };
 		534314822CAF478000DB2CF8 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		534314842CAF47DA00DB2CF8 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		53B0FE952CD10CE70054CA5F /* Funproject2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Funproject2.xcdatamodel; sourceTree = "<group>"; };
+		53B0FE962CD10D6E0054CA5F /* Funproject3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Funproject3.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,9 +482,11 @@
 		5318268B2CAD76820049C313 /* Funproject.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				53B0FE962CD10D6E0054CA5F /* Funproject3.xcdatamodel */,
+				53B0FE952CD10CE70054CA5F /* Funproject2.xcdatamodel */,
 				5318268C2CAD76820049C313 /* Funproject.xcdatamodel */,
 			);
-			currentVersion = 5318268C2CAD76820049C313 /* Funproject.xcdatamodel */;
+			currentVersion = 53B0FE962CD10D6E0054CA5F /* Funproject3.xcdatamodel */;
 			path = Funproject.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -5,7 +5,7 @@ import CoreData
     let coreDataService = CoreDataService.shared
     
    @objc func saveCheckInDate(_ date: Date, forCompany companyName: String) {
-        guard date.isValidDateTime() else {
+        guard date.isNotFuture() else {
             print("Datetime is invalid (in the future), not saving.")
             return
         }

@@ -5,10 +5,10 @@ public extension Date {
     
     func fetchValidDateWithMockedHourMinute() -> Date {
         let mockedDate = fetchDateWithMockedHourMinute()
-        return mockedDate.isValidDateTime() ? mockedDate : Date()
+        return mockedDate.isNotFuture() ? mockedDate : Date()
     }
     
-func isValidDateTime() -> Bool {
+func isNotFuture() -> Bool {
         let currentDate = Date()
         return self <= currentDate
     }

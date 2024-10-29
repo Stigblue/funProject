@@ -55,7 +55,7 @@ private extension DateTimePickerView {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
             Button(action: {
-                if selectedDate.isValidDateTime() {
+                if selectedDate.isNotFuture() {
                     let employeeService = EmployeeService()
                     employeeService.saveCheckInDate(selectedDate, forCompany: enteredCompanyName)
                     
