@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-@objc class CoreDataService: NSObject {
+@objc final class CoreDataService: NSObject {
    @objc static let shared = CoreDataService()
     
     private override init() {}
