@@ -22,7 +22,12 @@ struct DateTimePickerView: View {
     
     var content: some View {
         VStack {
-            DatePicker("Select Date and Time", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
+            DatePicker(
+              "Select Date and Time",
+              selection: $selectedDate,
+              in: ...Date(),
+              displayedComponents: [.date, .hourAndMinute]
+            )
                 .padding()
             
             Button(action: {
@@ -50,7 +55,7 @@ private extension DateTimePickerView {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
             Button(action: {
-                if selectedDate.isValidDateTime() {
+                if selectedDate.isNotFuture() {
                     let employeeService = EmployeeService()
                     employeeService.saveCheckInDate(selectedDate, forCompany: enteredCompanyName)
                     
@@ -70,3 +75,5 @@ private extension DateTimePickerView {
         .padding()
     }
 }
+
+

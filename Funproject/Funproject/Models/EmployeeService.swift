@@ -5,7 +5,7 @@ import CoreData
     let coreDataService = CoreDataService.shared
     
    @objc func saveCheckInDate(_ date: Date, forCompany companyName: String) {
-        guard date.isValidDateTime() else {
+        guard date.isNotFuture() else {
             print("Datetime is invalid (in the future), not saving.")
             return
         }
@@ -25,7 +25,7 @@ import CoreData
     
    @objc func fetchMostRecentCheckInDate(completion: @escaping (Date) -> Void) {
         DispatchQueue.global(qos: .background).async {
-            if let employee = self.coreDataService.fetchEntities(Employee.self, sortBy: "createdAt", limit: 1)?.first,
+            if let employee = self.coreDataService.fetchEntities(Employee.self, sortBy: "check_in_date_time", limit: 1)?.last,
                let dateString = employee.check_in_date_time {
                 if let date = DateFormatterService().date(from: dateString) {
                     completion(date)
