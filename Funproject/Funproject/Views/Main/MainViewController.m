@@ -8,7 +8,7 @@
 #import "MainViewController.h"
 #import "Funproject-Swift.h" 
 
-@interface MainViewController ()
+@interface MainViewController()
 @property (nonatomic, strong) UIButton *startButton;
 @property (nonatomic, strong) UILabel *welcomeLabel;
 @property (nonatomic, strong) UILabel *lastSelectedDatePickerLabel;

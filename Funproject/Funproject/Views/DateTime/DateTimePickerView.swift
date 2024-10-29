@@ -22,7 +22,12 @@ struct DateTimePickerView: View {
     
     var content: some View {
         VStack {
-            DatePicker("Select Date and Time", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
+            DatePicker(
+              "Select Date and Time",
+              selection: $selectedDate,
+              in: ...Date(),
+              displayedComponents: [.date, .hourAndMinute]
+            )
                 .padding()
             
             Button(action: {
@@ -70,3 +75,5 @@ private extension DateTimePickerView {
         .padding()
     }
 }
+
+
