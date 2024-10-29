@@ -90,7 +90,7 @@
     [super viewWillAppear:animated];
     // I want the screen to update with the recent values added and not just on app restart, so i will do this in viewWillAppear here.
     [self setDatePickerInitialValue];
-    [self fetchAndDisplayCompanyName];
+    [self updateTextValues];
 }
 
 
@@ -99,21 +99,7 @@
     [self.navigationController pushViewController:dateTimeVC animated:YES];
 }
 
-- (void)fetchAndDisplayCompanyName {
-    // Old
-//    CompanyService *companyService = [[CompanyService alloc] init];
-//    NSString *companyName = [companyService fetchMostRecentCompanyName];
-//    
-//    if (companyName != nil) {
-//        self.welcomeLabel.text = [NSString stringWithFormat:@"Last saved Company: %@", companyName];
-//    } else {
-//        self.welcomeLabel.text = @"Welcome first timer!";
-//    }
-    
-    // I WANT TO EITHER EXTEND OR INJECT THIS VIEW MODEL IN THE INITIALIZER. It's not ideal to instantiate it here.
-//    MainViewControllerViewModel *vm = [[MainViewControllerViewModel alloc] init];
-    
-    // Done.
+- (void)updateTextValues {
     self.welcomeLabel.text = self.vm.welcomeLabel;
 }
 

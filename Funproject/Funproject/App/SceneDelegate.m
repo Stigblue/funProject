@@ -22,6 +22,7 @@
         self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
         self.window.backgroundColor = [UIColor whiteColor];
 
+        // I would probably prefer to make an in-between view and not directly from here go to the MainVC. that could be the 'AppOverview' to be in charge of owning the viewmodel the app states. 
         MainViewControllerViewModel *mainVCVM = [[MainViewControllerViewModel alloc] init];
         MainViewController *mainVC = [[MainViewController alloc] initWithVM:mainVCVM];
         
