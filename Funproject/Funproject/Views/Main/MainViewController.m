@@ -19,7 +19,13 @@
 
 @implementation MainViewController
 
-
+- (instancetype)initWithVM:(MainViewControllerViewModel *)vm {
+    self = [super init];
+    if (self) {
+        _vm = vm; 
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -105,8 +111,10 @@
 //    }
     
     // I WANT TO EITHER EXTEND OR INJECT THIS VIEW MODEL IN THE INITIALIZER. It's not ideal to instantiate it here.
-    MainViewControllerViewModel *vm = [[MainViewControllerViewModel alloc] init];
-    self.welcomeLabel.text = vm.welcomeLabel;
+//    MainViewControllerViewModel *vm = [[MainViewControllerViewModel alloc] init];
+    
+    // Done.
+    self.welcomeLabel.text = self.vm.welcomeLabel;
 }
 
 - (void)setDatePickerInitialValue {
@@ -120,6 +128,8 @@
         });
     }];
 }
+
+
 
 
 @end
