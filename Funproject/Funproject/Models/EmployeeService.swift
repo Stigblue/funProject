@@ -4,7 +4,7 @@ import CoreData
 @objc class EmployeeService: NSObject {
     let coreDataService = CoreDataService.shared
     
-    // Testing commit
+    // Testing commit 2
    @objc func saveCheckInDate(_ date: Date, forCompany companyName: String) {
         guard date.isNotFuture() else {
             print("Datetime is invalid (in the future), not saving.")
